@@ -101,7 +101,7 @@ _inputs:
 
 Segmented controls input for selecting a single value from a set of options. Functionally equivalent to a [Select](#select) input.
 
-Choice inputs are shown for inputs configured with the type `choice`.​​​​​​
+Choice inputs are shown for inputs configured with the type `choice`.
 
 <comp.DocsImage path="/documentation/static/inputs/select/choice.png" alt=""/>
 
@@ -172,25 +172,28 @@ Select, Multiselect, Choice and Multichoice inputs have the following options av
 
 <comp.DataReference>
   <comp.DataReferenceRow label="allow_create" type_markdown="Boolean">
-    Allows new text values to be created at edit time. Defaults to `false`. Has no effect on select inputs.
+    Allows new text values to be created at edit time. Defaults to `false`.
+    
+    **Select** and **multiselect** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="allow_empty" type_markdown="Boolean">
-    Provides an empty option alongside the options provided by `values`. Defaults to `true`. Has no effect on multiselect inputs.
+    Allows the state where no options provided by `values` are selected. Defaults to `true`.
+    
+    **Select** and **choice** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="empty_type" type_markdown="string">
-    **Multiselect** and **multichoice** only.
-
     Set how an 'empty' value will be saved. Does not apply to existing empty values. Can be one of the following:
 
     * `array` - an empty value for this input will be stored as `[]` (default).
     * `null` - an empty value for this input will be stored as a null value. This does not apply to TOML files.
+    
+    **Multiselect** and **multichoice** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="preview" type_markdown="Object">
     The preview definition for changing the way selected and available options are displayed. The options available for select-style inputs are:
 
     * `text`
     * `icon` (Choice/Multichoice only)
-    * `image` (Choice/Multichoice only)
 
     See the [preview options documentation](/documentation/articles/changing-how-cards-preview-your-data/) for detailed information on setting this option. Defaults to:
 
@@ -203,7 +206,7 @@ Select, Multiselect, Choice and Multichoice inputs have the following options av
         - key: icon
     ```
 
-
+    **Choice** and **multichoice** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="preview.text" type_markdown="Array, string or boolean">
     Controls the main text shown for selected and available options. Has no effect unless the available or selected option is an object.
@@ -211,13 +214,15 @@ Select, Multiselect, Choice and Multichoice inputs have the following options av
     If the value is a primitive type, it is used directly.
 
     If set to `false`, no text is displayed.
+    
+    **Choice** and **multichoice** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="preview.icon" type_markdown="Array, string or boolean">
     Controls the icon shown for selected and available options. Must match a [Material Icon](https://material.io/tools/icons/) name.
 
     If set to `false`, no icon is displayed.
 
-    Available to Choice and Multichoice inputs.
+    **Choice** and **multichoice** only.
   </comp.DataReferenceRow>
   <comp.DataReferenceRow label="values" type_markdown="Array, object or string">
     Defines the values available to choose from. Optional, defaults to fetching values from the naming convention (e.g. `colors` or `my_colors` for [data set](#data-sets) `colors`).
